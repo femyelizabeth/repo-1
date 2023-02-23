@@ -1,0 +1,73 @@
+
+#file creaton
+fw=open("rajagiri.txt","w")
+fw.write("programming with python\npython is simple\npython is powerfull\nLet us learn python\nit is fun\n")
+fw.close()
+print("File",fw.name,"closed")
+print("File",fw.mode)
+print(fw.closed)
+
+#file renaming
+import os
+os.rename("raj.txt","rajbca.txt")
+
+#file removing
+import os
+os.remove("rajbca.txt")
+
+#copy file
+file1=input("Enter the source file:")
+file2=input("Enter the destination file:")
+fr=open(file1,"r")
+fw=open(file2,"w")
+for line in fr.readlines():#readline reads entire file and returns each lines in the file as a list
+    fw.write(line)
+fr.close()
+fw.close()
+print("1 File copied")
+
+#count the lines of a file
+file1=input("Enter the source file:")
+fr=open(file1,"r")
+print("Number of lines in file=",len(fr.readlines()))
+#countlines=0
+#for line in fr.readlines():
+ #   counrtlines+=1
+fr.close()
+#print("Number of lines in file=",countlines)
+
+#count the frequencies of each word in a file
+file1=input("Enter the source file:")
+fr=open(file1,"r")
+wordcount={}
+for word in fr.read().split():
+    if word not in wordcount:
+        wordcount[word]=1
+    else:
+        wordcount[word]+=1
+for k,v in wordcount.items():
+    print(k,"=",v)
+
+fr.close()
+
+#append file
+file1=input("Enter the source file for appending:")
+file2=input("Enter the second file for appending:")
+fa=open(file1,"a")
+fr=open(file2,"r")
+for line in fr.readlines():
+    fa.write(line)
+fr.close()
+fa.close()
+print("1 File appended successfully")
+
+#compare 2 files
+import filecmp
+file1=input("Enter the first file:")
+file2=input("Enter the second file:")
+if filecmp.cmp(file1,file2):
+    print("Files are equal")
+else:
+    print("Files are not equal")
+
+
