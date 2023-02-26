@@ -1,0 +1,35 @@
+<html>
+<head>
+    <script type="text/javascript">
+        function validate()
+        {
+            if(document.regform.nm.value==="")
+            {
+                alert("Name is Required");
+                document.regform.nm.focus();
+                return false;
+            }
+            if(document.regform.rn.value==="")
+            {
+                alert("Roll number is Required");
+                document.regform.rn.focus();
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form action="sessnl_insert.php" method="post" name="regform" onsubmit="return(validate());">
+        <table border="2">
+            <tr><th colspan="1" align="center">SESSIONAL MARKS</th></tr>
+            <tr><th NAME:></th><td>input name="nm"></td></tr>
+            <tr><th ROLL NO:></th><td>input name="rn"></td></tr>
+            <tr><th MARK1:></th><td>input name="m1" required></td></tr>
+            <tr><th MARK2:></th><td>input name="m2" required</td></tr>
+            <tr><th MARK3:></th><td>input name="m3" required</td></tr>
+            <tr><th MARK4:></th><td>input name="m4" required</td></tr>
+            <tr><td colspan="2" align="center"><input type="submit" value="SUBMIT"></td></tr>
+        </table>
+    </form>
+</body>
+</html>
