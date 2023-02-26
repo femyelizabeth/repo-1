@@ -1,0 +1,43 @@
+#qn1.read a list of colors and print the first color and last color
+color=input("Enter some colors:").split()
+print("first color is",color[0],"and last color is",color[-1])
+
+#qn2.read a file with extention and print its extension
+file=input("Enter a filename with extentions:").split(".")
+print("The extention is",file[1])
+
+#qn3.read a list of numbers and print the biggest
+numbers=input("Enter some numbers:").split(" ")
+numbers=list(map(int,numbers))
+print("Biggest number is",max(numbers))
+
+#qn4.read a string and swap first and last character=>apple-eppla
+str=input("Enter a string:")
+print(str[-1]+str[1:-1]+str[0])
+
+#qn5.read a string - reverse a string
+str=input("Enter a string:")
+print(str[::-1])
+
+#qn6. read two strings and swap first two characters of the strings
+#python programing=>prthon pyogram
+str1=input("Enter first string:")
+str2=input("Enter second string:")
+print(str2[:2]+str1[2:])
+print(str1[:2]+str2[2:])
+
+#qn7.read a string - apples are from africa
+#apples $re from $fric$
+str1=input("Enter a string:")
+char=str1[0]
+str1=str1.replace(char,"$")
+str1=char+str1[1:]
+print(str1)
+
+#qn8.read a list from the keyboard and return unique elements
+numbers=input("Enter some numbers:");
+numbers=list(map(int,numbers))
+print(numbers)
+set1=set(numbers)
+numbers=list(set1)
+print(numbers)
