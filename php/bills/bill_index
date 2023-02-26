@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <style>
+            table{
+                border-collapse:collapse;
+            }
+            table,th,td{
+                border:1px solid blue;
+            }
+        </style>
+    </head>
+    <body>
+        <form method="post" action="bill2.php">
+            <center>
+                <h1>Enter details of 5 items</h1>
+                <h3>Item code<input type="text" name="ic" placeholder="ex 11,12,13,14,15.."/></h3>
+                <h3>Item name<input type="text" name="in"/></h3>
+                <h3>Unit sold<input type="text" name="us"/></h3>
+                <h3>Rate<input type="text" name="rt"/><h3>
+                    <input type="submit" value="SUBMIT"/> 
+            </center>
+        </form>
+    </body>
+</html>
