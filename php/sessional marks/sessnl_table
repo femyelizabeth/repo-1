@@ -1,0 +1,16 @@
+<?php
+$bb=new mysqli("locahost","root"," ","class");
+if($bb->connect_error)
+{
+    die("Access denied!".$bb->connect_error);
+}
+$ba="create table student(roll_no int(2) PRIMARY KEY,name varchar(15) not null,mark1 int(2),mark2 int(2),mark3 int(2),mark4 int(2),tot int(2)";
+if($bb->query($ba)===True)
+{
+    echo "Table created";
+}
+else{
+    echo "failed".$bb->error;
+}
+$bb->close();
+?>
