@@ -1,0 +1,28 @@
+#List - used as stack
+
+list1=[1,4,8,9]
+print(list1)
+#push
+list1.append(10)
+print(list1)
+#pop
+list1.pop()
+print(list1)
+
+#List as Queue
+from collections import deque
+list1=[1,4,8,9]
+print(list1)
+queue=deque(list1)
+print(queue)
+queue.append("apple")
+print(queue)
+queue.popleft()
+print(queue)
+
+#split
+fruits=input("Enter some fruits:")
+fruits=fruits.split()#method1
+fruits=input("Enter some fruits:").split()#method2
+print(fruits)
+
