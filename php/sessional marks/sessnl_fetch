@@ -1,0 +1,54 @@
+<?php
+$cc=new mysqli("localhost","root"," ","class");
+if($cc->connect_error)
+{
+    die("connect error!".$cc->connect_error);
+}
+$ca="select * from student";
+$cb=$ca->query($ca);
+echo "<table border="1"><tr><th>NAME</th><th>ROLLNO</th><th>MARK1</th><th>MARK2</th><th>MARK3</th><th>MARK4</th><th>TOTAL</th></tr>";
+
+if($cb->num_rows>0)
+{
+    while($d=$cb->fetch_assoc())
+    {
+        echo "<tr>";
+        echo "<td>".$d["name"]."</td><td>".$d["roll_no"]."</td><td>".$d["mark1"]."</td><td>".$d["mark2"]."</td><td>".$d["mark3"]."</td><td>".
+        $d["mark4"]."</td><td>".$d["tot"]."</td>";
+        echo "</tr>";
+    }
+}
+
+echo "</table>";
+
+$av="select AVG(tot) from student";
+
+$min="select MIN(tot) from student";
+
+$max="select MAX(tot) from student";
+
+$result1=$cc->query($av);
+
+$result2=$cc->query($min);
+
+$result3=$cc->query($max);
+
+while($row=mysqli_fetch_array($result1))
+{
+    echo "Average of total:".$row['AVG(tot)'];
+    echo "<br";
+}
+
+while($row=mysqli_fetch_array($result2))
+{
+    echo "Minimum of total:".$row['MIN(tot)'];
+    echo "<br>";
+}
+
+while($row=mysqli_fetch_array($result3))
+{
+    echo "Maximum of total".$row['MAX(tot)'];
+    echo "<br>";
+}
+
+$cc->close();
