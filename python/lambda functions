@@ -1,0 +1,29 @@
+#lambda functions - map, filter, reduce(higher order function)
+oldlist=[8,9,6,3,9,34,56]
+print(oldlist)
+#increment each item in the list by 2
+newlist=list(map(lambda x:x+2,oldlist))
+print(newlist)
+
+oldlist1=[8,9,6,3,9,34,56]
+oldlist2=[3,56,78,9,87]
+print(oldlist1)
+print(oldlist2)
+#add corresponding items in each list
+newlist=list(map(lambda x,y:x+y,oldlist1,oldlist2))
+print(newlist)
+
+#using filter
+#filter out odd numbers
+#add corresponding items in each list
+newlist=list(filter(lambda x:x%2!=0,oldlist1))
+print(newlist)
+
+#sum of all items in a list
+import functools
+oldlist=[8,9,6,3,9,34,56]
+print(oldlist)
+
+#sum of all items in a list
+sum=functools.reduce(lambda x,y:x+y,oldlist)
+print(sum)
