@@ -1,0 +1,29 @@
+<?php
+$dd=new mysqli("localhost","root"," ","class");
+if($dd->connect_error)
+{
+    die ("Access denied".$dd->connect_error);
+}
+
+$da="insert into student(roll_no,name,mark1,mark2,mark3,mark4) values ('$_POST['rn']','$_POST['nm']','$_POST['m1']','$_POST['m2']',
+'$_POST['m3']','$_POST['m4']')";
+
+if($dd->query($da)===True)
+{
+    echo "values inserted successfully";
+}
+else{
+    echo "failed".$da->error;
+}
+
+$tot="update student set tot=mark1+mark2+mark3+mark4";
+
+if($dd->query($tot)===True)
+{
+    echo "<br>";
+}
+
+include "sessnl_fetch.php";
+
+$dd->close();
+?>
