@@ -1,0 +1,44 @@
+#python functions
+#1.function to fingd the sum of two numbers
+def calc(a,b):
+    #return a+b
+    print("sum=",a+b)
+#main program
+a=int(input("Enter first number:"))
+b=int(input("Enter second number:"))
+#print("Sum=",calc(a,b))
+calc(a,b)
+
+#2.function for finding the sum of 2 numbers
+def calc(a,b):
+    sum=a+b
+    diff=a-b
+    prod=a*b
+    quot=a/b
+    return sum,diff,prod,quot,"apple"
+#main program
+a=int(input("Enter first number:"))
+b=int(input("Enter second number:"))
+#s,d,p,q=calc(a,b)
+result=calc(a,b)
+print(result)
+print("sum=",result[0])
+print("Difference=",result[1])
+print("product=",result[2])
+print("quotient=",result[3])
+print(result[4])
+
+#3.variable lenght arguments
+def reversestring(str):
+    return str[::-1]
+str=input("Enter a string:")
+print("Reversed string:",reversestring(str))
+
+#4.read a number and print all the factors of the number
+def factors(a):
+    for i in range(1,a+1):
+        if a%i==0:print (i)
+
+a=int(input("Enter a number:"))
+print("Factors of",a)
+factors(a)
