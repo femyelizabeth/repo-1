@@ -1,0 +1,20 @@
+#Parenthesis matching, given a string of combiation of characteristics ’{‘ and ‘}’, determine if the string represents a valid match
+#Eg:
+#{}->matching
+#{{{->not matching
+#{}}->not matching
+#{}{}->matching}
+
+str=list(input("Enter string:"))
+li=[]
+open=0
+close=0
+for i in str:
+    if i=="{":
+        open+=1
+    if i=="}" and open>=close:
+        close+=1
+if (open==close):
+    print("matching")
+else:
+    print("not matching")
