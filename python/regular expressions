@@ -1,0 +1,89 @@
+#Regular expressions - 1.match()=>checks whether the string matches with its beginning word
+
+import re
+line="Python programming is fun"
+matchObj=re.match("fun",line)
+if matchObj:
+    print("match found")
+else:
+    print("match not found")
+
+         #OR
+import re
+line="Python programming is fun"
+matchObj=re.match("Python",line)
+if matchObj:
+    print("match found")
+else:
+    print("match not found")
+
+#bultinfn.pysearch()=>searches entire string to find the match
+import re
+line="Python programming is fun"
+searchObj=re.search("fun",line,re.I)#re.I is used for searching irrespective of lower or upper case
+if searchObj:
+    print("search found")
+else:
+    print("search not found")
+
+#3.sub()==>substitution
+import re
+zipcode="2003-$456-345"
+num=re.sub(r'\D',"",zipcode)#'\D'->any non numeric character
+print(num)#we replace "" with '-'
+
+import re
+zipcode="2003-$456-345"
+num=re.sub(r'\d',"",zipcode)#'\D'->any numeric character
+print(num)#we replace "" with '-'
+
+import re
+zipcode="2003-$456-345"
+num=re.sub(r'\d',"a",zipcode)#'\D'->any numeric character
+print(num)#we replace "a" with '-'
+
+#4.findall()
+import re
+a="hello 23455 world 34jnjr in 4 jnnj345 34 jnjn 45j"
+num=re.findall("\d+",a)   #\d+=>more than 1 digit
+print(num)
+
+import re
+a="hello 23455 world 34jnjr in 4 jnnj345 34 jnjn 45j"
+num=re.findall("\D",a)   #\d+=>more than 1 digit
+print(num)
+
+import re
+a="hello 23455 world 34jnjr in 4 jnnj345 34 jnjn 45j"
+num=re.findall("\d",a)   #\d+=>more than 1 digit
+print(num)
+num=list(map(int,num))
+print(num)
+print(max(num)," is the biggest number")
+
+#5.compile()
+import re
+str=input("Enter a filename:")
+fr=open(str,"r")
+text=fr.readlines()
+fr.close()
+#compile the regular expressions
+keyword=re.compile(r'python')
+for line in text:
+    if keyword.search(line):
+        print(line)
+
+#retrives all lines begins with lower case
+import re
+str=input("Enter a filename:")
+fr=open(str,"r")
+text=fr.readlines()
+fr.close()
+#compile the regular expressions
+keyword=re.compile(r'^[a-z]\w*\b')
+for line in text:
+    if keyword.search(line):
+        print(line)
+
+
+        
