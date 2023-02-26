@@ -1,0 +1,38 @@
+#OOP - Invoking the base class constructor
+class student:
+    def __init__(self,rollno,name):
+        self.rollno=rollno
+        self.name=name
+    def displayStudent(self):
+        print("Roll number:",self.rollno)
+        print("Name:",self.name)
+class teacher:
+    def __init__(self,teach_name,subject):
+        self.teach_name=teach_name
+        self.subject=subject
+    def displayTeacher(self):
+        print("Name of the teacher:",self.teach_name)
+        print("Subject:",self.subject)
+#multiple inheritance
+class school(student,teacher):
+    def __init__(self,rollno,name,teach_name,subject,school_name):
+        #invoking the base class constructor
+        student.__init__(self,rollno,name)
+        teacher.__init__(self,teach_name,subject)
+        self.school_name=school_name
+    def displaySchool(self):
+        print("Name of the school:",self.school_name)
+
+#main pgm
+rollno=int(input("Enter roll number:"))
+name=input("Enter name of the student:")
+teach_name=input("Enter the name of the teacher:")
+subject=input("Enter the subject:")
+school_name=input("Enter the school name:")
+#create the object
+sc=school(rollno,name,teach_name,subject,school_name)
+sc.displayStudent()
+sc.displayTeacher()
+sc.displaySchool()
+                 
+    
