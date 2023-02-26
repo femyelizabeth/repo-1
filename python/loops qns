@@ -1,0 +1,153 @@
+#1.for loop to find sum of all items in a list
+str=input("Enter some numbers:")
+numbers=list(map(int,str.split()))
+print(numbers)
+sum=0
+for i in numbers:
+    sum=sum+i
+print("sum of ",numbers,"is",sum)
+
+
+#2.linear search
+str=input("Enter some numbers:")
+numbers=list(map(int,str.split()))
+num=int(input("Enter a number:"))
+for i in range(len(numbers)):
+    if numbers[i]==num:
+        print(num,"found at location ",i)
+        break
+else:print(num,"not found")
+
+#3==>break,continue and pass
+print("eg for break")
+for i in range(2,10,2):
+    if i==6:break
+    print(i)
+    
+print("eg for continue")
+for i in range(2,10,2):
+    if i==6:continue
+    print(i)
+    
+print("eg for pass")
+for i in range(2,10,2):
+    if i==6:pass
+    print(i)
+
+#4.read N.If number is divisible by 3, print "fizz", divisible by 5 ,"buzz"
+#both 3 and 5, "fizzbuzz" else print the number
+n=int(input("Enter N:"))
+for i in range(1,n+1):
+    if i%3==0 and i%5==0:print("fizzbuzz")
+    elif i%3==0:print("fizz")
+    elif i%5==0:print("buzz")
+    else:print(i)
+
+#5.read a name. print it in reverse order
+str=input("Enter a name:")
+names=str.split()
+names.reverse()
+for name in names:print(name,end=' ')
+
+#6.read a sentence. count the frequency of each word
+str=input("Enter a sentence:")
+words=str.split()
+counts={}
+for word in words:
+    if word not in counts:
+        counts[word]=1
+    else:
+        counts[word]+=1
+print(counts)
+print(counts.items())
+for k,v in counts.items():
+    print(k,"=",v)
+
+#7.HW==>read a sentence. count the freaquency of each letter-->*no need to split the words
+str=input("Enter a sentence:")
+counts={}
+for character in str:
+    if character not in counts:
+        counts[character]=1
+    else:
+        counts[character]+=1
+print(counts)
+print(counts.items())
+for k,v in counts.items():
+    print(k,"=",v)
+
+#8.read a sentence. count the number of vowels, consonance, digits, special characters
+str=input("Enter a sentence:")
+vowels=consonants=digits=spec=0
+for char in str:
+    if char in "aeiouAEIOU":vowels+=1
+    if char in "bBcCdDfFgGhHjJkKlLmMnNpPqQrRsStTvVwWxXyYzZ":consonants+=1
+    if char in "$#@":spec+=1
+print("Vowels:",vowels)
+print("Consonents:",consonants)
+print("Special Charactres",spec)
+
+#9.check whether a list is empty or not
+str=input("Enter a list of numbers:")
+numbers=str.split()
+if not numbers:
+    print("The list",numbers,"is empty")
+else:
+    print("The list",numbers,"is not empty")
+
+#10.factorial of a number
+n=int(input("Enter the number:"))
+fact=1
+if n<0:
+    print("factorial not exist")
+else:
+    for i in range(1,n+1):
+        fact=fact*i
+print("factorial of",n,"is",fact)
+
+
+#11.sum of all digits of a number
+num=input("Enter a number:")
+sum=0
+for char in num:
+    sum+=int(char)
+print("Sum of all digits of",num,"is",sum)
+
+#12.remove the characters from odd positions of a string-->*apple--ape
+str=input("Enter a string:")
+newstring=""
+for i in range(0,len(str),2):
+    newstring=newstring+str[i]
+print("string after removing characters at odd position is",newstring)
+
+#13.program to remove duplicates from a list
+str1=input("Enter a list of numbers:").split()
+s=set(str1)
+print(s)
+l=list(s)
+print(l)
+
+#14.program without using set
+str1=input("Enter a list of numbers:").split()
+ulist=[]
+for item in str1:
+    if item not in ulist:
+        ulist.append(item)
+print("unique list=",ulist)
+
+#15.read a list of words and a lenght n. return back a list with words greater than n.
+str=input("Enter a list of fruits:").split()
+n=int(input("Enter N:"))
+newfruits=[]
+for fruit in str:
+    if len(fruit)>n:
+        newfruits.append(fruit)
+print("Fruits with lenght greater than",n,"is",newfruits)
+
+#16.program to read a list of words and return the word with maximum lenght along with its lenght
+str=input("Enter a list of fruits:").split()
+fruits_len=[]
+for fruit in str:
+    fruits_len.append((len(fruit),fruit))
+    fruits_len.sort()
+print("longest word is",fruits_len[-1][1],"and its lenght is",fruits_len[-1][0])
