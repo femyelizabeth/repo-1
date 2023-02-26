@@ -1,0 +1,17 @@
+<?php
+$aa=new mysqli("localhost","root","");
+if($aa->connect_error)
+{
+    die ("connection failed".$aa->connect_error);
+}
+$ab="create database class";
+if($aa->query($ab)===True)
+{
+    echo "Database created";
+}
+else
+{
+    echo "Error found".$aa->error;
+}
+$aa->close();
+?>
