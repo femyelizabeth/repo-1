@@ -1,0 +1,108 @@
+#1.create Rectangle class with attributes length and breadth and implement methods to determine area and perimeter.
+#create a Rectangle object and find its area and perimeter
+
+class Rectangle:
+    def __init__(self,l=1,b=1):
+        self.__length=l
+        self.__breadth=b
+    def area(self):
+        return self.__length*self.__breadth
+    def perimeter(self):
+        return 2*(self.__length+self.__breadth)
+
+try:
+    l=int(input("Enter length:"))
+    b=int(input("Enter breadth:"))
+    r=Rectangle(l,b)
+    print("\nArea of rectangle is:",r.area())
+    print("\nPerimeter of rectangle is:",r.perimeter())
+
+except Exception as e:
+    print(e)
+
+#------------------------------------------------------------------------------------------------------------------------
+#2.create a class Flower(name) add attribute petalColor at runtime.
+#if the flower has the attribute petalColor then display '<petalColor><name>' else dipsplay 'Unknown flower'
+class Flower:
+    def __init__(self):
+        self.name=input("Enter flower name:")
+    def __str__(self):
+        if hasattr(self,'petalColor'):
+            return self.petalColor +' '+self.name
+        else:
+            return 'Unknown flower'
+try:
+    a=Flower()
+    print(a,end='\n\n')
+    n=input("enter petal color:")
+    setattr(a,'petalColor',n)
+    print(a)
+
+except Exception as e:
+    print(e)
+
+
+
+#------------------------------------------------------------------------------------------------------------------------
+#3.create class Book(title,author).
+#Add attributes 'publisher' at runtime.
+#if the attr 'publisher' is available in Book object, then print<title> written by <author> is published by <publisher>,
+#else print 'Unknown Publisher'
+
+class Book:
+    def __init__(self):
+        self.title=input("Enter title:")
+        self.author=input("Enter author:")
+
+    def __str__(self):
+        if hasattr(self,'publisher'):
+            return self.title+' written by '+self.author+' published by '+self.publisher
+        else:
+            return 'UNKNOWN PUBLISHER'
+
+try:
+    b=Book()
+    print(b,end='\n\n')
+    n=input("Enter publisher:")
+    setattr(b,'publisher',n)
+    print(b)
+
+except Exception as e:
+    print(e)
+
+
+
+#------------------------------------------------------------------------------------------------------------------------
+#4.create a Bank account with members account numbers,name,type of account and balance.
+#write constructors and methods to deposit at the bank and withdraw an amount from the bank
+
+class Bank:
+    def __init__(self):
+        self.acno=input("Enter account no.:")
+        self.name=input("Enter name:")
+        self.type=input("Enter type:")
+        self.balance=int(input("Enter balance:"))
+
+    def deposit(self):
+        a=int(input("enter the amount to deposite:"))
+        self.balance+=a
+
+    def withdraw(self):
+        a=int(input("Enter amount to withdraw:"))
+        if (self.balance<500):
+            return "Not enough balance"
+        else:
+            self.balance=self.balance-a
+
+    def display(self):
+        return 'current balance amount:'+str(self.balance)
+
+try:
+    b=Bank()
+    b.deposit()
+    print(b.display())
+    print(b.withdraw())
+    print(b.display())
+
+except Exception as e:
+    print(e)
