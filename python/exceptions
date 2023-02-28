@@ -1,0 +1,59 @@
+#1.sample exception
+try:
+    a=int(input("Enter value 1:"))
+    b=int(input("Enter value 2:"))
+    print(a/b)
+
+except ZeroDivisionError as ze:
+    print("Division by zero error",ze)
+except ValueError as e:
+    print("Non Integer value entered",e)
+
+#2.raise condition for accepting an integer if reading is not within 90-120
+
+try:
+    n=int(input("enter input:"))
+    if n<90 or n>120:
+        raise ValueError("Abnormal condition!")
+except ValueError as e:
+    print(e)
+
+#3.user defined exception 'validate' to validate login credentials
+class validate(Exception):pass
+
+try:
+    username="FemyElizabeth"
+    password="Hadessah@#1"
+    user=input("Enter username:")
+    pasw=input("Enter password:")
+    if user!=username or pasw!=password:
+        raise validate("Invalid user credentials")
+    else:
+        print("Login successful")
+except validate as e:
+    print(e)
+
+
+#4.create a module operations which has functions to add,subtract,multiply and divide integers.
+#write a pgm that import operations and perform all integer operations
+
+import operations
+
+a=int(input("Enter value 1:"))
+b=int(input("Enter value 2:"))
+
+print(a,'+',b,'=',operations.add(a,b))
+print(a,'-',b,'=',operations.sub(a,b))
+print(a,'*',b,'=',operations.mul(a,b))
+print(a,'/',b,'=',operations.div(a,b))
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#separate file=>operations.py
+#module operations
+def add(a,b):
+    return a+b
+def sub(a,b):
+    return a-b
+def mul(a,b):
+    return a*b
+def div(a,b):
+    return a/b
