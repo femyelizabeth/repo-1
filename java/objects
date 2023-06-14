@@ -1,0 +1,77 @@
+class CPU
+{
+	float price;
+	
+	CPU(float p){
+		
+		price=p;
+	}
+	
+	void display(){
+		
+		System.out.println("Price:"+price);
+	}
+	
+	class Processor
+	{
+		int noc;
+		
+		String p_manf;
+		
+		Processor(int n,String p_man){
+		
+		 	noc=n;
+		 	p_manf=p_man;
+		}
+		
+		void display(){
+		
+			System.out.println("Number of cores:"+noc);
+			System.out.println("Manufacturer:"+p_manf);
+		}
+		
+	}
+	
+	static class RAM
+	{
+	
+		static int mem;
+		
+		static String r_manf;
+		
+		RAM(int m,String r_m){
+			
+			mem=m;
+			
+			r_manf=r_m;
+		}
+		
+	        void display(){
+		
+			System.out.println("RAM memory:"+mem+"GB");
+			System.out.println("Manufacturer:"+r_manf);
+		}
+		
+			
+	}
+	
+}
+
+
+class main5
+{
+	public static void main(String ar[]){
+	
+		CPU c=new CPU(60000);
+		
+		c.display();
+		
+		CPU.Processor p=c.new Processor(5,"Intel");
+		
+		p.display();
+		
+		CPU.RAM r=new CPU.RAM(4,"Sync");
+		
+		r.display();
+	}
+}
