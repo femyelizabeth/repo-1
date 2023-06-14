@@ -1,0 +1,70 @@
+import java.util.Scanner;
+
+public class Overload {
+    public static double area(float r) {
+        return Math.PI * r * r; // Area of Circle
+    }
+
+    public static int area(int l, int b) {
+        return l * b; // Area of a Rectangle
+    }
+
+    public static int area(int s) {
+        return s * s; // Area of a Square
+    }
+
+    public static double area(float base, float height) {
+        return 0.5 * base * height; // Area of a Triangle
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        float a, b;
+        int x, y;
+        int ch;
+
+        
+            System.out.println("AREA of different Shapes:");
+            System.out.println("1. Circle");
+            System.out.println("2. Rectangle");
+            System.out.println("3. Square");
+            System.out.println("4. Triangle");
+            System.out.println("0. Exit");
+            do{
+            System.out.print("Choice: ");
+            ch = sc.nextInt();
+	
+            switch (ch) {
+                case 1:
+                    System.out.print("Radius: ");
+                    a = sc.nextFloat();
+                    System.out.println("Area of circle with radius " + a + " is " + area(a));
+                    break;
+                case 2:
+                    System.out.print("Length: ");
+                    x = sc.nextInt();
+                    System.out.print("Breadth: ");
+                    y = sc.nextInt();
+                    System.out.println("Area of rectangle with dimensions (" + x + "," + y + ") is " + area(x, y));
+                    break;
+                case 3:
+                    System.out.print("Side: ");
+                    x = sc.nextInt();
+                    System.out.println("Area of square with side " + x + " is " + area(x));
+                    break;
+                case 4:
+                    System.out.print("Base: ");
+                    a = sc.nextFloat();
+                    System.out.print("Height: ");
+                    b = sc.nextFloat();
+                    System.out.println("Area of triangle with dimensions (" + a + "," + b + ") is " + area(a, b));
+                    break;
+                default:
+                    System.out.println("Invalid Choice");
+                    break;
+            }
+
+        } while (ch != 0);
+
+    }
+}
