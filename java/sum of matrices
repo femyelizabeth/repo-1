@@ -1,0 +1,97 @@
+import java.util.Scanner;
+class matrix
+{
+	
+	int rsize;
+	
+	int csize;
+	
+	int a[][]=new int[5][5];
+	
+	int i,j;
+	
+	void read(){
+	
+		Scanner s=new Scanner(System.in);
+	
+	
+		System.out.println("Enter the row size:");
+	
+		rsize=s.nextInt();
+	
+		System.out.println("Enter the column size:");
+	
+		csize=s.nextInt();
+	
+		System.out.println("Enter the matrix elements:");
+	
+		for(i=0;i<rsize;i++)
+		{
+			for(j=0;j<csize;j++)
+			{
+				a[i][j]=s.nextInt();
+			}
+		}
+	}
+	
+	void display(){
+	
+		for(i=0;i<rsize;i++){
+		
+			for(j=0;j<csize;j++){
+		
+				System.out.print(a[i][j]+" ");
+			}
+		
+			System.out.println();
+		}
+	}
+	
+	void sum(){
+	
+		for(i=0;i<rsize;i++){
+		
+			for(j=0;j<csize;j++)
+			{
+				a[i][j]=m1.a[i][j]+m2.a[i][j];
+	
+	
+			}
+		}
+	
+	}
+	
+}
+
+class main4
+{
+
+	public static void main(String ar[]){
+	
+		matrix m1=new matrix();
+		
+		matrix m2=new matrix();
+		
+		System.out.println("1st Matrix");
+		
+		m1.read();
+		
+		System.out.println("2nd Matrix");
+		
+		m2.read();
+		
+		System.out.println("Matrices are:");
+		
+		m1.display();
+		
+		m2.display();
+		
+		matrix m3=new matrix();
+		
+		m3.sum();
+		
+		System.out.println("Sum of matrices is:");
+		
+		m3.display();
+	}
+}
