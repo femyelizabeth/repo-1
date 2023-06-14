@@ -1,0 +1,77 @@
+import java.text.DecimalFormat;
+
+interface BillCalculatable {
+    double calculateTotal();
+}
+
+class Product implements BillCalculatable {
+    private String productId;
+    private String name;
+    private int quantity;
+    private double unitPrice;
+
+    public Product(String productId, String name, int quantity, double unitPrice) {
+        this.productId = productId;
+        this.name = name;
+        this.quantity = quantity;
+        this.unitPrice = unitPrice;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public double getUnitPrice() {
+        return unitPrice;
+    }
+
+    @Override
+    public double calculateTotal() {
+        return quantity * unitPrice;
+    }
+}
+
+public class BillGenerator {
+    public static void main(String[] args) {
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
+
+        String orderNo = "Order No: ";
+        String date = "Date: ";
+
+        Product[] products = {
+                new Product("101", "B", 2, 25),
+                new Product("102", "A", 1, 100)
+        };
+
+        double netAmount = 150.00;
+
+        System.out.println("----------------------------------------------");
+        System.out.println(orderNo);
+        System.out.println(date);
+        System.out.println("----------------------------------------------");
+        System.out.println("P_Id    |    Name   | Quantity | unit price | Total");
+        System.out.println("------------------------------------------------");
+        double total = 0.0;
+        for (Product product : products) {
+            String pId = product.getProductId();
+            String name = product.getName();
+            int quantity = product.getQuantity();
+            double unitPrice = product.getUnitPrice();
+            double productTotal = product.calculateTotal();
+            total += productTotal;
+
+            System.out.printf("%-8s| %-10s| %-9s| %-12s| %-10s%n", pId, name, quantity, unitPrice, decimalFormat.format(productTotal));
+        }
+        System.out.println("------------------------------------------------");
+        System.out.printf("%47s%-10s%n", "Net. Amount", decimalFormat.format(netAmount));
+        System.out.println("----------------------------------------------");
+    }
+}
