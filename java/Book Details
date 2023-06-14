@@ -1,0 +1,97 @@
+import java.util.Scanner;
+
+class Publisher {
+    protected String pName;
+
+    public void setPName(Scanner sc) {
+        System.out.print("Enter the publisher name: ");
+        pName = sc.nextLine();
+    }
+
+    public String getPName() {
+        return pName;
+    }
+
+    public void display() {
+        System.out.println("Publisher: " + pName);
+    }
+}
+
+class Book extends Publisher {
+    protected String Title;
+
+    public void setTitle(Scanner sc) {
+        System.out.print("Enter the book title: ");
+        Title = sc.nextLine();
+    }
+
+    public String getTitle() {
+        return Title;
+    }
+
+    public void display() {
+        super.display();
+        System.out.println("Book Title: " + Title);
+    }
+}
+
+class Literature extends Book {
+    protected String genre;
+
+    public void setGenre(Scanner sc) {
+        System.out.print("Enter the genre: ");
+        genre = sc.nextLine();
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void display() {
+        super.display();
+        System.out.println("Genre: " + genre);
+    }
+}
+
+class Fictional extends Book {
+    protected String author;
+
+    public void setAuthor(Scanner sc) {
+        System.out.print("Enter the author: ");
+        author = sc.nextLine();
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void display() {
+        super.display();
+        System.out.println("Author: " + author);
+    }
+}
+
+public class BookDetails {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        Literature lit = new Literature();
+        lit.setPName(sc);
+        lit.setTitle(sc);
+        lit.setGenre(sc);
+
+        Fictional fic = new Fictional();
+        fic.setPName(sc);
+        fic.setTitle(sc);
+        fic.setAuthor(sc);
+
+        System.out.println("\nLiterature Details:");
+        lit.display();
+
+        System.out.println("\nFictional Details:");
+        fic.display();
+
+        // Close the scanner
+        sc.close();
+    }
+}
