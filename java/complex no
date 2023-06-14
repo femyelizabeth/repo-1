@@ -1,0 +1,78 @@
+import java.util.Scanner;
+
+class complex
+{
+	float real;
+	
+	float imag;
+	
+	complex(){
+	
+		real=0;
+		
+		imag=0;
+	}
+	
+	void read()
+	{
+	
+		Scanner s=new Scanner(System.in);
+		
+		System.out.println("Enter the real part:");
+		
+		real=s.nextFloat();
+		
+		System.out.println("Enter the imaginary part:");
+		
+		imag=s.nextFloat();
+		
+	 }
+	
+	void display(){
+		
+		System.out.println(real+"+"+imag+"i");
+	}
+	
+	void sum(complex c1,complex c2){
+		
+		real=c2.real+c1.real;
+		
+		imag=c2.imag+c1.imag;
+		
+	}
+
+}
+
+class main3
+{
+
+	public static void main(String a[]){
+		
+		
+		System.out.println("Enter 1st complex number:");
+		
+		complex c1=new complex();
+		
+		c1.read();
+		
+		System.out.println("Enter the 2nd complex number:");
+		
+		complex c2=new complex();
+		
+		c2.read();
+		
+		System.out.println("\nComplex numbers are:");
+		
+		c1.display();
+		
+		c2.display();
+		
+		complex c3=new complex();
+		
+		c3.sum(c1,c2);
+		
+		System.out.println("SUM is:");
+		
+		c3.display();
+	}
+} 	
