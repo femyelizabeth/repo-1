@@ -1,0 +1,73 @@
+class product
+{
+	
+	int pcode;
+	
+	String pname;
+	
+	float prize;
+	
+	product()
+	{
+		pcode=100;
+	
+		pname="soap";
+	
+		prize=15;
+		
+	}
+	
+	product(int pc,String pn,float pz)
+	{
+	
+		pcode=pc;
+	
+		pname=pn;
+	
+		prize=pz;
+		
+	}
+	
+	void display()
+	{
+		System.out.println("Pcode="+pcode+"\npname="+pname+"\nprize="+prize);
+	}
+	
+}
+class main2
+{
+	public static void main(String args[])
+	{
+	
+		product p1=new product();
+	
+		product p2=new product(101,"lays",10);
+	
+		product p3=new product(102,"byts",5);
+	
+		p1.display();
+	
+		p2.display();
+	
+		p3.display();
+
+		if(p1.prize<p2.prize && p1.prize<p3.prize){	
+	
+			System.out.println("Smallest prize is for the product"+p1.pname+" prize="+p1.prize);}
+			
+		else if(p2.prize<p3.prize){
+	
+			System.out.println("Smallest prize is for the product"+p2.pname+" prize="+p2.prize);}
+	
+		else{
+	
+			System.out.println("Smallest prize is for the product"+p3.pname+" prize="+p3.prize);}
+			
+		}
+	}
+}
+			
+		
+		
+	
+	
