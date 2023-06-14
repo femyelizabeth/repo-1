@@ -1,0 +1,22 @@
+class main1
+{
+ public static void main(String ar[])
+ {
+  show();
+  
+  main1 s=new main1();
+  
+  s.disp();
+ }
+ 
+ static void show()
+ {
+  System.out.println("This is a static method");
+  }
+ 
+ void disp()
+ {
+  System.out.println("This is method called using object");
+  }
+ }
+  
