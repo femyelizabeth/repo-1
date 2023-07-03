@@ -1,4 +1,7 @@
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 interface BillCalculatable {
     double calculateTotal();
@@ -42,23 +45,41 @@ class Product implements BillCalculatable {
 public class BillGenerator {
     public static void main(String[] args) {
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
+        Scanner scanner = new Scanner(System.in);
 
-        String orderNo = "Order No: ";
-        String date = "Date: ";
+        System.out.print("Enter Order No: ");
+        String orderNo = scanner.nextLine();
 
-        Product[] products = {
-                new Product("101", "B", 2, 25),
-                new Product("102", "A", 1, 100)
-        };
+        System.out.print("Enter Date: ");
+        String date = scanner.nextLine();
 
-        double netAmount = 150.00;
+        List<Product> products = new ArrayList<>();
+        while (true) {
+            System.out.print("Enter P_Id (or 'exit' to finish): ");
+            String pId = scanner.nextLine();
+            if (pId.equalsIgnoreCase("exit")) {
+                break;
+            }
 
-        System.out.println("----------------------------------------------");
-        System.out.println(orderNo);
-        System.out.println(date);
-        System.out.println("----------------------------------------------");
+            System.out.print("Enter Name: ");
+            String name = scanner.nextLine();
+
+            System.out.print("Enter Quantity: ");
+            int quantity = scanner.nextInt();
+
+            System.out.print("Enter Unit Price: ");
+            double unitPrice = scanner.nextDouble();
+            scanner.nextLine(); // Consume the remaining newline
+
+            products.add(new Product(pId, name, quantity, unitPrice));
+        }
+
+        System.out.println("----------------------------------------------------------");
+        System.out.println("Order No: " + orderNo);
+        System.out.println("Date: " + date);
+        System.out.println("----------------------------------------------------------");
         System.out.println("P_Id    |    Name   | Quantity | unit price | Total");
-        System.out.println("------------------------------------------------");
+        System.out.println("----------------------------------------------------------");
         double total = 0.0;
         for (Product product : products) {
             String pId = product.getProductId();
@@ -70,8 +91,8 @@ public class BillGenerator {
 
             System.out.printf("%-8s| %-10s| %-9s| %-12s| %-10s%n", pId, name, quantity, unitPrice, decimalFormat.format(productTotal));
         }
-        System.out.println("------------------------------------------------");
-        System.out.printf("%47s%-10s%n", "Net. Amount", decimalFormat.format(netAmount));
-        System.out.println("----------------------------------------------");
+        System.out.println("------------------------------------------------------------");
+        System.out.printf("%47s%-10s%n", "Net. Amount", decimalFormat.format(total));
+        System.out.println("------------------------------------------------------------");
     }
 }
