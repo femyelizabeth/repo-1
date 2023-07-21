@@ -1,0 +1,21 @@
+set serveroutput On
+Declare
+    str varchar2(4000);
+function reverse(input varchar2)
+return varchar2 is
+    rev_str varchar2(4000);
+BEGIN
+    rev_str := '';
+
+    for i in reverse 1.. length(input) loop
+        rev_str := rev_str || substr(input,i,1);
+    end loop;
+
+    return rev_str;
+end;
+
+BEGIN
+    str := reverse('Hello , World!');
+    dbms_output.put_line('Reversed String: ' || str);
+end;
+/
