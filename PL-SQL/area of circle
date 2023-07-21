@@ -1,0 +1,47 @@
+
+Set Serveroutput ON
+DECLARE
+area number(6,2);
+pi constant number(3,2):=3.14;
+radius number(5);
+
+BEGIN
+
+radius:= &radius;
+area:=pi*radius*radius;
+dbms_output.Put_line('Area='||area);
+END;
+/
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Set Serveroutput ON
+Declare 
+area number(6,2);
+pi constant number(3,2):=3.14;
+radius number(5);
+
+BEGIN
+
+for i in 1..4
+loop
+area:=pi*power(i,2);
+dbms_output.Put_line('Area with Radius '||i||' is:'||area);
+end loop;
+END;
+/
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Set Serveroutput ON
+Declare 
+area number(6,2);
+pi constant number(3,2):=3.14;
+r number(5);
+
+BEGIN
+
+r:= &r;
+if(r<10) then
+area:=pi*r*r;
+dbms_output.Put_line('Area of circle with radius '||r||' is: '||area);
+end if;
+end;
+/
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
