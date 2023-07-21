@@ -1,0 +1,24 @@
+create table squares (value number(3), sq_value number(10));
+
+set serveroutput On
+Declare
+    i number(3);
+    sq number(10);
+
+function findsquare(num in number)
+return number is
+sq number(10);
+
+BEGIN  
+    sq := num*num;
+    return sq;
+end;
+
+BEGIN
+for i in 1.. 10 loop
+    sq:=findsquare(i);
+    insert into squares values(i,sq);
+end loop;
+end;
+/
+select * from squares;
