@@ -1,8 +1,8 @@
-create table cust(p_acc_no number, p_amnt number);
+create table customer(p_acc_no number, p_amnt number);
 set serveroutput ON
 create or replace procedure deposit(p_acc_no in number, p_amnt in number) is
 BEGIN
-    update cust set bal=bal+p_amnt where acc_no=p_acc_no;
+    update customer set bal=bal+p_amnt where acc_no=p_acc_no;
 
     commit;
 end;
@@ -19,7 +19,7 @@ BEGIN
     dbms_output.put_line('Deposit successful');
 
    
-    select bal into a_bal from cust where acc_no=acno;
+    select bal into a_bal from customer where acc_no=acno;
     dbms_output.put_line('Updated balance:'|| a_bal); 
 end;
 /
