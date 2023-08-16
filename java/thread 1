@@ -49,7 +49,14 @@ public class thread {
         mthread.start();
         pthread.start();
         
-        
+        try{
+	
+		Thread.sleep(12);
+
+	    }catch(InterruptedException ie)
+        {
+            System.out.print(ie);
+        }
         
         System.out.println("Both threads have finished.");
     }
