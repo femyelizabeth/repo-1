@@ -43,3 +43,18 @@ public class arrayList {
         System.out.println("Is List Empty? " + isEmpty);
     }
 }
+
+
+
+Output:
+Initial List: [Apple, Banana, Orange, Grapes, Mango]
+Size of List: 5
+Second Element: Banana
+Contains 'Apple': true
+Index of 'Grapes': 3
+Removed 'Banana': true
+Sorted List: [Apple, Grapes, Mango, Orange]
+Updated List: [Apple, Grapes, Pineapple, Orange]
+Cleared List: []
+Is List Empty? true
+
