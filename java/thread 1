@@ -1,0 +1,56 @@
+Qn. Define 2 classes; one for generating multiplication table of 5 and other for displaying first
+N prime numbers. Implement using threads. (Thread class) 
+****************************************************************************************************************************
+
+class multiThread extends Thread {
+    
+    public void run() {
+        for (int i = 1; i <= 10; i++) {
+            System.out.println("5 x " + i + " = " + (5 * i));
+        }
+    }
+}
+
+class primeThread extends Thread {
+    private boolean isPrime(int num) {
+        if (num <= 1) return false;
+        if (num <= 3) return true;
+        if (num % 2 == 0 || num % 3 == 0) return false;
+        
+        int i = 5;
+        while (i * i <= num) {
+            if (num % i == 0 || num % (i + 2) == 0) return false;
+            i += 6;
+        }
+        return true;
+    }
+    
+    public void run() {
+        int n = 10; // Change this to the desired value of N
+        int count = 0;
+        int num = 2;
+        
+        while (count < n) {
+            if (isPrime(num)) {
+                System.out.print(num + " ");
+                count++;
+            }
+            num++;
+        }
+    }
+}
+
+public class thread {
+    public static void main(String[] args) {
+        multiThread mthread = new multiThread();
+        primeThread pthread = new primeThread();
+        
+        
+        mthread.start();
+        pthread.start();
+        
+        
+        
+        System.out.println("Both threads have finished.");
+    }
+}
