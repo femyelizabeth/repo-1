@@ -1,0 +1,45 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class arrayList {
+    public static void main(String[] args) {
+        List<String> sl = new ArrayList<>();
+
+        sl.add("Apple");
+        sl.add("Banana");
+        sl.add("Orange");
+        sl.add("Grapes");
+        sl.add("Mango");
+
+        System.out.println("Initial List: " + sl);
+
+        int size = sl.size();
+        System.out.println("Size of List: " + size);
+
+       
+        String s2 = sl.get(1);
+        System.out.println("Second Element: " + s2);
+
+        boolean isApple = sl.contains("Apple");
+        System.out.println("Contains 'Apple': " + isApple);
+ 
+        int iGrapes = sl.indexOf("Grapes");
+        System.out.println("Index of 'Grapes': " + iGrapes);
+
+        boolean rm = sl.remove("Banana");
+        System.out.println("Removed 'Banana': " + rm);
+
+        Collections.sort(sl);
+        System.out.println("Sorted List: " + sl);
+
+        sl.set(2, "Pineapple");
+        System.out.println("Updated List: " + sl);
+
+        sl.clear();
+        System.out.println("Cleared List: " + sl);
+
+        boolean isEmpty = sl.isEmpty();
+        System.out.println("Is List Empty? " + isEmpty);
+    }
+}
