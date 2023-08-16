@@ -1,0 +1,23 @@
+import java.util.Stack;
+
+public class stack1 {
+    public static void main(String[] args) {
+        Stack<Integer> istk = new Stack<>();
+        istk.push(10);
+        istk.push(20);
+        istk.push(30);
+
+        System.out.println("Popped item: " + istk.pop());
+        System.out.println("Popped item: " + istk.pop());
+
+        Stack<String> stk = new Stack<>();
+        stk.push("Hello");
+        stk.push("World");
+
+        System.out.println("Popped item: " + stk.pop());
+        System.out.println("Popped item: " + stk.pop());
+
+        System.out.println("Is intStack empty? " + istk.isEmpty());
+        System.out.println("Is stringStack empty? " + stk.isEmpty());
+    }
+}
