@@ -63,3 +63,13 @@ public class thread2 {
         System.out.println("Both threads have finished.");
     }
 }
+
+
+
+
+
+Output:
+Fibonacci Series:
+1 1 2 3 5 8 13 21 34 55 
+Even Numbers in Range 1 to 20:
+2 4 6 8 10 12 14 16 18 20
