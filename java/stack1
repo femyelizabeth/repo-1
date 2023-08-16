@@ -26,3 +26,16 @@ public class stack1 {
         System.out.println("Is stringStack empty? " + stk.isEmpty());
     }
 }
+
+
+
+Output:
+Peek at the top item: 30
+Position of 20 in the stack: 2
+Position of 15 in the stack: -1
+Popped item: 30
+Popped item: 20
+Popped item: World
+Popped item: Hello
+Is intStack empty? false
+Is stringStack empty? true
