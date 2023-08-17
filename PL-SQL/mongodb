@@ -1,0 +1,189 @@
+use employee
+db.createCollection("empdet")
+db.empdet.insertMany([
+    {empid: "101",ename: "Ram",salary: 15000,desig: "Clerk"},
+    {empid: "102",ename: "Shyam",salary: 20000,desig: "Administrator"},
+    {empid: "103",ename: "Hari",salary: 10000,desig: "Supervisor"},
+    {empid: "104",ename: "Sita",salary: 15000,desig: "Clerk"},
+    {empid: "105",ename: "Rose",salary: 20000,desig: "Admnistrator"},
+    {empid: "106",ename: "Maria",salary: 25000,desig: "Manager"}
+])
+
+db.empdet.find().pretty()
+
+db.empdet.aggregate([
+    { $match: { desig: "Clerk" } },
+    { $group: { _id: null, totalSalary: { $sum: "$salary" } } }
+    
+]);
+
+{ $addFields: { totalSalary: { $add: ["$totalSalary", 1000] } } }
+
+
+
+
+db.createUser({
+    user: "Mohan",
+    pwd: "Mohan@empdet",
+    roles: [
+        { role: "readWrite", db: "employee" }
+    ]
+})
+
+db.createUser({
+    user: "Mohan",
+    pwd: "mohan@empdet",
+    roles: [
+        { role: "readWrite", db: "employee" }
+    ]
+})
+
+
+
+use employee
+switched to db employee
+> db.createCollection("empdet")
+{ "ok" : 1 }
+
+db.empdet.insertMany([
+    ...     {empid: "101",ename: "Ram",salary: 15000,desig: "Clerk"},
+    ...     {empid: "102",ename: "Shyam",salary: 20000,desig: "Administrator"},
+    ...     {empid: "103",ename: "Hari",salary: 10000,desig: "Supervisor"},
+    ...     {empid: "104",ename: "Sita",salary: 15000,desig: "Clerk"},
+    ...     {empid: "105",ename: "Rose",salary: 20000,desig: "Admnistrator"},
+    ...     {empid: "106",ename: "Maria",salary: 25000,desig: "Manager"}
+    ... ])
+    {
+            "acknowledged" : true,
+            "insertedIds" : [
+                    ObjectId("64ddad4363c6167a174ffd3d"),
+                    ObjectId("64ddad4363c6167a174ffd3e"),
+                    ObjectId("64ddad4363c6167a174ffd3f"),
+                    ObjectId("64ddad4363c6167a174ffd40"),
+                    ObjectId("64ddad4363c6167a174ffd41"),
+                    ObjectId("64ddad4363c6167a174ffd42")
+            ]
+    }
+
+    db.empdet.find().pretty()
+    {
+            "_id" : ObjectId("64ddad4363c6167a174ffd3d"),
+            "empid" : "101",
+            "ename" : "Ram",
+            "salary" : 15000,
+            "desig" : "Clerk"
+    }
+    {
+            "_id" : ObjectId("64ddad4363c6167a174ffd3e"),
+            "empid" : "102",
+            "ename" : "Shyam",
+            "salary" : 20000,
+            "desig" : "Administrator"
+    }
+    {
+            "_id" : ObjectId("64ddad4363c6167a174ffd3f"),
+            "empid" : "103",
+            "ename" : "Hari",
+            "salary" : 10000,
+            "desig" : "Supervisor"
+    }
+    {
+            "_id" : ObjectId("64ddad4363c6167a174ffd40"),
+            "empid" : "104",
+            "ename" : "Sita",
+            "salary" : 15000,
+            "desig" : "Clerk"
+    }
+    {
+            "_id" : ObjectId("64ddad4363c6167a174ffd41"),
+            "empid" : "105",
+            "ename" : "Rose",
+            "salary" : 20000,
+            "desig" : "Admnistrator"
+    }
+    {
+            "_id" : ObjectId("64ddad4363c6167a174ffd42"),
+            "empid" : "106",
+            "ename" : "Maria",
+            "salary" : 25000,
+            "desig" : "Manager"
+    }
+
+    db.empdet.find({ename:/^S/}).pretty()
+{
+        "_id" : ObjectId("64ddad4363c6167a174ffd3e"),
+        "empid" : "102",
+        "ename" : "Shyam",
+        "salary" : 20000,
+        "desig" : "Administrator"
+}
+{
+        "_id" : ObjectId("64ddad4363c6167a174ffd40"),
+        "empid" : "104",
+        "ename" : "Sita",
+        "salary" : 15000,
+        "desig" : "Clerk"
+}
+
+db.empdet.updateOne(
+    ... { ename:"Sita"},
+    ... { $inc: { salary:1000}}
+    ... )
+    { "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+    > db.empdet.find()
+    { "_id" : ObjectId("64ddad4363c6167a174ffd3d"), "empid" : "101", "ename" : "Ram", "salary" : 15000, "desig" : "Clerk" }
+    { "_id" : ObjectId("64ddad4363c6167a174ffd3e"), "empid" : "102", "ename" : "Shyam", "salary" : 20000, "desig" : "Administrator" }
+    { "_id" : ObjectId("64ddad4363c6167a174ffd3f"), "empid" : "103", "ename" : "Hari", "salary" : 10000, "desig" : "Supervisor" }
+    { "_id" : ObjectId("64ddad4363c6167a174ffd40"), "empid" : "104", "ename" : "Sita", "salary" : 16000, "desig" : "Clerk" }
+    { "_id" : ObjectId("64ddad4363c6167a174ffd41"), "empid" : "105", "ename" : "Rose", "salary" : 20000, "desig" : "Admnistrator" }
+    { "_id" : ObjectId("64ddad4363c6167a174ffd42"), "empid" : "106", "ename" : "Maria", "salary" : 25000, "desig" : "Manager" }
+
+
+    db.empdet.aggregate([
+        ...     { $match: { desig: "Clerk" } },
+        ...     { $group: { _id: null, totalSalary: { $sum: "$salary" } } }
+        ...
+        ... ])
+        { "_id" : null, "totalSalary" : 31000 }
+
+
+db.empdet.deleteOne({empid:106})
+{ "acknowledged" : true, "deletedCount" : 0 }
+
+
+use admin
+switched to db admin
+> db.dropUser("mohan")
+true
+> db.getUsers()
+[ ]
+> db.createUser({
+...     user: "Mohan",
+...     pwd: "mohan@empdet",
+...     roles: [
+...         { role: "readWrite", db: "employee" }
+...     ]
+... })
+Successfully added user: {
+        "user" : "Mohan",
+        "roles" : [
+                {
+                        "role" : "readWrite",
+                        "db" : "employee"
+                }
+        ]
+}
+> db.getUsers()
+[
+        {
+                "_id" : "admin.Mohan",
+                "user" : "Mohan",
+                "db" : "admin",
+                "roles" : [
+                        {
+                                "role" : "readWrite",
+                                "db" : "employee"
+                        }
+                ]
+        }
+]
