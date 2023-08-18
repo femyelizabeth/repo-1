@@ -1,0 +1,71 @@
+import java.util.*;
+
+public class Deque_Ex {
+
+    public static void main(String[] args) {
+        Deque<String> deque = new LinkedList<String>();
+
+        // Adding elements to the deque
+        deque.add(" and Vegetable");
+        deque.addFirst("Fruit");
+        deque.addLast(" are ");
+        deque.push("A");
+        deque.offer("Good");
+        deque.offerFirst("Daily");
+        deque.offerLast("for Health");
+
+        System.out.println("Initial Deque:");
+        System.out.println(deque);
+
+        // Iterating through the deque using a standard iterator
+        System.out.println("\nDeque contents using Standard Iterator:");
+        Iterator<String> iterator = deque.iterator();
+        while (iterator.hasNext())
+            System.out.print(" " + iterator.next());
+
+        // Iterating through the deque in reverse order using a reverse iterator
+        System.out.println("\n\nDeque contents using Reverse Iterator:");
+        Iterator<String> reverse = deque.descendingIterator();
+        while (reverse.hasNext())
+            System.out.print(" " + reverse.next());
+
+        // Peeking at the front element of the deque
+        System.out.println("\n\nDeque Peek: " + deque.peek());
+        System.out.println("Deque, After peek: " + deque);
+
+        // Popping the front element of the deque
+        System.out.println("\nDeque Pop: " + deque.pop());
+        System.out.println("Deque, After pop: " + deque);
+
+        // Checking if the deque contains a specific element
+        System.out.println("\nDeque Contains Three: " + deque.contains("Three"));
+
+        // Removing the first and last elements from the deque
+        deque.removeFirst();
+        deque.removeLast();
+        System.out.println("\nDeque, after removing first and last elements: " + deque);
+    }
+}
+
+
+
+
+Output:
+Initial Deque:
+[Daily, A, Fruit,  and Vegetable,  are , Good, for Health]
+
+Deque contents using Standard Iterator:
+ Daily A Fruit  and Vegetable  are  Good for Health
+
+Deque contents using Reverse Iterator:
+ for Health Good  are   and Vegetable Fruit A Daily
+
+Deque Peek: Daily
+Deque, After peek: [Daily, A, Fruit,  and Vegetable,  are , Good, for Health]
+
+Deque Pop: Daily
+Deque, After pop: [A, Fruit,  and Vegetable,  are , Good, for Health]
+
+Deque Contains Three: false
+
+Deque, after removing first and last elements: [Fruit,  and Vegetable,  are , Good]
