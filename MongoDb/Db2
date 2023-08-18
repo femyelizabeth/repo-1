@@ -4,6 +4,8 @@ switched to db Student
 db.createCollection("stdetails")
 { "ok" : 1 }
 
+a) Insert Datas
+**************************
  db.stdetails.insertMany([ {rollno: "101",name: "Anna",age: 20,course: "MCA"}, {rollno: "102",name: "Catherine",age: 21,course: "MTECH"}, {rollno: "103",name: "Denna",age: 22,course: "BTECH"}, {rollno: "104",name: "Sam",age: 25,course: "MCA"}, {rollno: "105",name: "Karthik",age: 24,course: "MCA"}, {rollno: "106",name: "Aravind",age:20,course: "MCA"} ])
 {
         "acknowledged" : true,
@@ -16,11 +18,8 @@ db.createCollection("stdetails")
                 ObjectId("64df36aa24b3ccc59665c3e3")
         ]
 }
-
- db.find().pretty()
-2023-08-18T14:45:35.673+0530 E QUERY    [thread1] TypeError: db.find is not a function :
-@(shell):1:1
-
+b). List all the details
+-------------------------------------
 > db.stdetails.find().pretty()
 {
         "_id" : ObjectId("64df36aa24b3ccc59665c3de"),
@@ -64,6 +63,9 @@ db.createCollection("stdetails")
         "age" : 20,
         "course" : "MCA"
 }
+
+c). Find document from the studentdetails collection where name begins with A
+------------------------------------------------------------------------------------------------
 > db.stdetails.find({name:/^A/}).pretty()
 {
         "_id" : ObjectId("64df36aa24b3ccc59665c3de"),
@@ -79,19 +81,31 @@ db.createCollection("stdetails")
         "age" : 20,
         "course" : "MCA"
 }
+
+d). Update course of student to Mtech whose rollno is 106
+---------------------------------------------------------------------------------------------------
 > db.stdetails.updateOne({rollno:"106"},
 ... {$set:{course:"MTECH"}})
 { "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
 
+e).Add a new field DOJ 
+---------------------------
+db.stdetails updateMany({},{$set:{Doj:new Date()}})
 
+
+f). find total number of students who opted MCA
+----------------------------------------------------------------
  db.stdetails.aggregate([{$match:{course:"MCA"}},
 ... {$group:{_id:null,total_num:{$sum:1}}}])
 { "_id" : null, "total_num" : 3 }
 
+g). Delete a document having rollno 104.
+-----------------------------------------------------------------
 db.stdetails.deleteOne({_id:"104"})
 { "acknowledged" : true, "deletedCount" : 0 }
 
-
+h). create user with name "Mohan: and give read/write role to the user for student database
+------------------------------------------------------------------------------------------------------
 use admin
 switched to db admin
 > db.grantRolesToUser("Mohan",[{role:"readWrite",db:"stdetails"}])
