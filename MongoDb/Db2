@@ -1,0 +1,115 @@
+ use Student
+switched to db Student
+
+db.createCollection("stdetails")
+{ "ok" : 1 }
+
+ db.stdetails.insertMany([ {rollno: "101",name: "Anna",age: 20,course: "MCA"}, {rollno: "102",name: "Catherine",age: 21,course: "MTECH"}, {rollno: "103",name: "Denna",age: 22,course: "BTECH"}, {rollno: "104",name: "Sam",age: 25,course: "MCA"}, {rollno: "105",name: "Karthik",age: 24,course: "MCA"}, {rollno: "106",name: "Aravind",age:20,course: "MCA"} ])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("64df36aa24b3ccc59665c3de"),
+                ObjectId("64df36aa24b3ccc59665c3df"),
+                ObjectId("64df36aa24b3ccc59665c3e0"),
+                ObjectId("64df36aa24b3ccc59665c3e1"),
+                ObjectId("64df36aa24b3ccc59665c3e2"),
+                ObjectId("64df36aa24b3ccc59665c3e3")
+        ]
+}
+
+ db.find().pretty()
+2023-08-18T14:45:35.673+0530 E QUERY    [thread1] TypeError: db.find is not a function :
+@(shell):1:1
+
+> db.stdetails.find().pretty()
+{
+        "_id" : ObjectId("64df36aa24b3ccc59665c3de"),
+        "rollno" : "101",
+        "name" : "Anna",
+        "age" : 20,
+        "course" : "MCA"
+}
+{
+        "_id" : ObjectId("64df36aa24b3ccc59665c3df"),
+        "rollno" : "102",
+        "name" : "Catherine",
+        "age" : 21,
+        "course" : "MTECH"
+}
+{
+        "_id" : ObjectId("64df36aa24b3ccc59665c3e0"),
+        "rollno" : "103",
+        "name" : "Denna",
+        "age" : 22,
+        "course" : "BTECH"
+}
+{
+        "_id" : ObjectId("64df36aa24b3ccc59665c3e1"),
+        "rollno" : "104",
+        "name" : "Sam",
+        "age" : 25,
+        "course" : "MCA"
+}
+{
+        "_id" : ObjectId("64df36aa24b3ccc59665c3e2"),
+        "rollno" : "105",
+        "name" : "Karthik",
+        "age" : 24,
+        "course" : "MCA"
+}
+{
+        "_id" : ObjectId("64df36aa24b3ccc59665c3e3"),
+        "rollno" : "106",
+        "name" : "Aravind",
+        "age" : 20,
+        "course" : "MCA"
+}
+> db.stdetails.find({name:/^A/}).pretty()
+{
+        "_id" : ObjectId("64df36aa24b3ccc59665c3de"),
+        "rollno" : "101",
+        "name" : "Anna",
+        "age" : 20,
+        "course" : "MCA"
+}
+{
+        "_id" : ObjectId("64df36aa24b3ccc59665c3e3"),
+        "rollno" : "106",
+        "name" : "Aravind",
+        "age" : 20,
+        "course" : "MCA"
+}
+> db.stdetails.updateOne({rollno:"106"},
+... {$set:{course:"MTECH"}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+
+
+ db.stdetails.aggregate([{$match:{course:"MCA"}},
+... {$group:{_id:null,total_num:{$sum:1}}}])
+{ "_id" : null, "total_num" : 3 }
+
+db.stdetails.deleteOne({_id:"104"})
+{ "acknowledged" : true, "deletedCount" : 0 }
+
+
+use admin
+switched to db admin
+> db.grantRolesToUser("Mohan",[{role:"readWrite",db:"stdetails"}])
+> db.getUsers()
+[
+        {
+                "_id" : "admin.Mohan",
+                "user" : "Mohan",
+                "db" : "admin",
+                "roles" : [
+                        {
+                                "role" : "readWrite",
+                                "db" : "employee"
+                        },
+                        {
+                                "role" : "readWrite",
+                                "db" : "stdetails"
+                        }
+                ]
+        }
+]
