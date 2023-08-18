@@ -1,0 +1,52 @@
+import java.util.*;
+
+public class hash_setcomp {
+
+    public static void main(String[] args) {
+
+        // Create an empty hash set
+        HashSet<String> h_set = new HashSet<String>();
+
+        // Use add() method to add values to the hash set
+        h_set.add("Red");
+        h_set.add("Green");
+        h_set.add("Black");
+        h_set.add("White");
+
+        HashSet<String> h_set1 = new HashSet<String>();
+        h_set1.add("Red");
+        h_set1.add("Pink");
+        h_set1.add("Orange");
+        h_set1.add("Black");
+
+        HashSet<String> h_set2 = new HashSet<String>();
+        h_set2.add("Red");
+        h_set2.add("Pink");
+        h_set2.add("Black");
+        h_set2.add("Orange");
+
+        // Comparison output in hash set
+        System.out.println("Comparing values of h_set with h_set2:");
+        for (String element : h_set) {
+            System.out.println(h_set2.contains(element) ? "Yes" : "No");
+        }
+
+        // Comparing two hash sets using equals() method
+        System.out.println("After comparing h_set1 and h_set2 = " + h_set1.equals(h_set2));
+
+        // Comparing two hash sets using equals() method and storing the result
+        boolean check = h_set.equals(h_set2);
+        System.out.println("After comparing h_set and h_set2 = " + check);
+    }
+}
+
+
+Output:
+Comparing values of h_set with h_set2:
+Yes
+No
+Yes
+No
+After comparing h_set1 and h_set2 = true
+After comparing h_set and h_set2 = false
+
