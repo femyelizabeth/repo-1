@@ -8,7 +8,12 @@ db.createCollection("stdetails")
 
 a) Insert Datas
 **************************
- db.stdetails.insertMany([ {rollno: "101",name: "Anna",age: 20,course: "MCA"}, {rollno: "102",name: "Catherine",age: 21,course: "MTECH"}, {rollno: "103",name: "Denna",age: 22,course: "BTECH"}, {rollno: "104",name: "Sam",age: 25,course: "MCA"}, {rollno: "105",name: "Karthik",age: 24,course: "MCA"}, {rollno: "106",name: "Aravind",age:20,course: "MCA"} ])
+ db.stdetails.insertMany([ {rollno: "101",name: "Anna",age: 20,course: "MCA"}, 
+                           {rollno: "102",name: "Catherine",age: 21,course: "MTECH"}, 
+                           {rollno: "103",name: "Denna",age: 22,course: "BTECH"}, 
+                           {rollno: "104",name: "Sam",age: 25,course: "MCA"}, 
+                           {rollno: "105",name: "Karthik",age: 24,course: "MCA"}, 
+                           {rollno: "106",name: "Aravind",age:20,course: "MCA"} ])
 {
         "acknowledged" : true,
         "insertedIds" : [
