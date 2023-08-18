@@ -1,4 +1,6 @@
- use Student
+Create database student and make collections with name "studentdetails"
+*********************************************************************************************************
+use Student
 switched to db Student
 
 db.createCollection("stdetails")
