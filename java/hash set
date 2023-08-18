@@ -1,0 +1,50 @@
+import java.util.HashSet;
+
+public class hash {
+    public static void main(String[] args) {
+        // Create a HashSet to store car brands
+        HashSet<String> cars = new HashSet<String>();
+        cars.add("Volvo");
+        cars.add("BMW");
+        cars.add("Ford");
+        cars.add("BMW"); // Duplicate, will not be added
+        cars.add("Mazda");
+        cars.add("Ferrari");
+        cars.add("McLaren");
+        cars.add("Lamborghini");
+
+        // Iterate through the HashSet and print car brands
+        System.out.println("Car Brands:");
+        for (String car : cars) {
+            System.out.println(car);
+        }
+
+        // Check if "Mazda" is in the HashSet
+        System.out.println("Contains Mazda: " + cars.contains("Mazda")); // true will be printed
+
+        // Remove a car brand from the HashSet
+        cars.remove("Volvo");
+
+        // Print the contents of the HashSet after removing a car
+        System.out.println("Car Brands after removing Volvo:");
+        System.out.println(cars);
+
+        // Uncomment the line below to clear the HashSet
+        // cars.clear();
+        // System.out.println("HashSet after clearing: " + cars);
+    }
+}
+
+
+Output:
+Car Brands:
+Ferrari
+Lamborghini
+Volvo
+Mazda
+Ford
+McLaren
+BMW
+Contains Mazda: true
+Car Brands after removing Volvo:
+[Ferrari, Lamborghini, Mazda, Ford, McLaren, BMW]
