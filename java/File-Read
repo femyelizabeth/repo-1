@@ -1,0 +1,34 @@
+import java.io.*;
+class file_read
+{
+   public static void main(String arg[]) throws IOException
+    {
+      String s="";
+
+   		 try{
+		FileReader f1=new FileReader("/home/user/Desktop/femy/dir1/demo.txt");
+    
+//Reader and  Writer are used in character streams and End of file (null)
+	
+		BufferedReader r=new BufferedReader(f1);
+		while((s=r.readLine())!=null){
+        		System.out.println(s);
+		}
+		r.close();
+   	
+	}catch(IOException e){System.out.println(e);}
+	
+	
+			
+  }
+}
+
+
+Output:
+O come all yee faithful
+Joyful and triumphant
+O come yee, O come yee to Bethlehem
+Come and behold him,
+Born the king of angels
+O come let us adore him,Come let us adore him
+O come let us adore him...in Christ the Lord
