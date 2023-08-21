@@ -1,0 +1,38 @@
+import java.io.*;
+
+public class file_write {
+    public static void main(String[] args) {
+        try {
+            // Create an InputStreamReader to read user input
+            InputStreamReader r = new InputStreamReader(System.in);
+            BufferedReader br = new BufferedReader(r);
+
+            System.out.println("Enter the string: ");
+            String str = br.readLine(); // Read user input
+
+            // Specify the file path where you want to write the content
+            FileWriter f = new FileWriter("/home/user/Desktop/femy/java/file2.txt");
+
+            // Create a BufferedWriter to write to the file
+            BufferedWriter wr = new BufferedWriter(f);
+            wr.write(str); // Write the user input to the file
+            wr.append("Gloria..In Excelsis Deo"); // Append additional content
+            wr.close(); // Close the BufferedWriter
+
+            System.out.println("Successfully written to the file.");
+        } catch (IOException w) {
+            System.out.println(w);
+        }
+    }
+}
+
+
+
+
+Output:
+Enter the string: 
+Angels we have heard on high...Sweetly singing o'er the plains...
+Successfully written to the file.
+
+$gedit file2.txt
+Angels we have heard on high...Sweetly singing o'er the plains...Gloria..In Excelsis Deo
